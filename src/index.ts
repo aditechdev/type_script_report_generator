@@ -10,7 +10,6 @@ import { ConsoleReport } from "./report/consoleReport";
 import { Summary } from "./Summary";
 import { HTMLReport } from "./report/htmReport";
 
-
 // import { MatchResult } from "./matchResult";
 
 // const reader = new MatchReader("football.csv");
@@ -18,14 +17,14 @@ import { HTMLReport } from "./report/htmReport";
 
 // Create an object that satifies  the DataReader interface
 
-const csvFileReader = new CsvFileReader("football.csv");
+// const csvFileReader = new CsvFileReader("football.csv");
 
-const matchReaded = new MatchReader(csvFileReader);
+const matchReaded =  MatchReader.readFromCSV("football.csv");
 matchReaded.load();
 
-const summary = new Summary(new WinAnalysis("Man United"), new HTMLReport());
+// const summary = new Summary(new WinAnalysis("Man United"), new HTMLReport());
 // const summary = new Summary(new WinAnalysis('Man United'), new ConsoleReport());
-summary.buildAndPrintReport(matchReaded.matches);
+// summary.buildAndPrintReport(matchReaded.matches);
 // matchReaded.matches;
 
 // const matches = reader.data;
@@ -33,3 +32,7 @@ summary.buildAndPrintReport(matchReaded.matches);
 // console.log(matches);
 
 // console.log(MatchResult.AwayWin);
+
+const summary = Summary.winsAnalysisWithHtmlReport("Man United");
+
+summary.buildAndPrintReport(matchReaded.matches);
