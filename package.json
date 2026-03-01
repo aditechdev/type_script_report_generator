@@ -1,0 +1,21 @@
+{
+  "name": "type_script_report_generator",
+  "version": "1.0.0",
+  "description": "Practice Project",
+  "keywords": [
+    "TypeScript"
+  ],
+  "license": "ISC",
+  "author": "aditechdev AKA Aditya Anand",
+  "type": "commonjs",
+  "main": "build/index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"  
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
