@@ -3,9 +3,15 @@
 // import { CsvFileReader } from "./CsvFileReader";
 // import { MatchReader } from "./MatchReader";
 // import { CsvFileReader } from "./CsvFileReader";
+import { WinAnalysis } from "./analyzers/winsAnalysis";
 import { CsvFileReader } from "./CsvFileReader";
 import { MatchReader } from "./MatchReader";
-import { MatchResult } from "./matchResult";
+import { ConsoleReport } from "./report/consoleReport";
+import { Summary } from "./Summary";
+import { HTMLReport } from "./report/htmReport";
+
+
+// import { MatchResult } from "./matchResult";
 
 // const reader = new MatchReader("football.csv");
 // reader.read();
@@ -16,23 +22,14 @@ const csvFileReader = new CsvFileReader("football.csv");
 
 const matchReaded = new MatchReader(csvFileReader);
 matchReaded.load();
-matchReaded.matches;
+
+const summary = new Summary(new WinAnalysis("Man United"), new HTMLReport());
+// const summary = new Summary(new WinAnalysis('Man United'), new ConsoleReport());
+summary.buildAndPrintReport(matchReaded.matches);
+// matchReaded.matches;
 
 // const matches = reader.data;
 
 // console.log(matches);
 
-console.log(MatchResult.AwayWin);
-
-let maWin = 0;
-const compareData: string = "Man United";
-
-for (let match of matchReaded.matches) {
-	if (match[1] === compareData && match[5] === MatchResult.HomeWin) {
-		maWin++;
-	} else if (match[2] === compareData && match[5] === MatchResult.AwayWin) {
-		maWin++;
-	}
-}
-
-console.log(`MAXWINS ${maWin}`);
+// console.log(MatchResult.AwayWin);
